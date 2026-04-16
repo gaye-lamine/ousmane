@@ -17,24 +17,18 @@ interface MediaItem {
   label?: string;
 }
 
-// Import des fichiers
-import vid1 from '../assets/realisations/1.mp4';
-import vid2 from '../assets/realisations/2.mp4';
-import vid3 from '../assets/realisations/3.mp4';
-import vid4 from '../assets/realisations/4.mp4';
-import vid5 from '../assets/realisations/5.mp4';
-import vid6 from '../assets/realisations/6.mp4';
-
+// ─────────────────────────────────────────────
+// URLs Cloudinary — ajoute / modifie ici
+// ─────────────────────────────────────────────
 const mediaItems: MediaItem[] = [
-  { id: 1, type: 'video', src: vid1, label: 'Réalisation 1' },
-  { id: 2, type: 'video', src: vid2, label: 'Réalisation 2' },
-  { id: 3, type: 'video', src: vid3, label: 'Réalisation 3' },
-  { id: 4, type: 'video', src: vid4, label: 'Réalisation 4' },
-  { id: 5, type: 'video', src: vid5, label: 'Réalisation 5' },
-  { id: 6, type: 'video', src: vid6, label: 'Réalisation 6' },
-  // Pour ajouter des photos plus tard :
-  // import img7 from '../assets/realisations/7.jpg';
-  // { id: 7, type: 'image', src: img7, label: 'Réalisation 7' },
+  { id: 1, type: 'video', src: 'https://res.cloudinary.com/dygcctw10/video/upload/v1776356215/2_loso2d.mp4',  label: 'Réalisation 1' },
+  { id: 2, type: 'video', src: 'https://res.cloudinary.com/dygcctw10/video/upload/v1776356212/5_jtsrf6.mp4',  label: 'Réalisation 2' },
+  { id: 3, type: 'video', src: 'https://res.cloudinary.com/dygcctw10/video/upload/v1776356202/7_rm3dsz.mp4',  label: 'Réalisation 3' },
+  { id: 4, type: 'video', src: 'https://res.cloudinary.com/dygcctw10/video/upload/v1776356202/8_qdj85c.mp4',  label: 'Réalisation 4' },
+  { id: 5, type: 'video', src: 'https://res.cloudinary.com/dygcctw10/video/upload/v1776356201/10_vtcf8t.mp4', label: 'Réalisation 5' },
+  { id: 6, type: 'video', src: 'https://res.cloudinary.com/dygcctw10/video/upload/v1776356198/3_ldzzqr.mp4',  label: 'Réalisation 6' },
+  // Pour ajouter une photo :
+  // { id: 7, type: 'image', src: 'https://res.cloudinary.com/dygcctw10/image/upload/...', label: 'Réalisation 7' },
 ];
 
 // ─────────────────────────────────────────────
