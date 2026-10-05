@@ -33,10 +33,11 @@ const mediaItems: MediaItem[] = [
 
 // ─────────────────────────────────────────────
 
-const VideoThumb: React.FC<{ src: string; onClick: () => void; label?: string; index: number }> = ({
-  src, onClick, label, index,
+const VideoThumb: React.FC<{ src: string; thumb?: string; onClick: () => void; label?: string; index: number }> = ({
+  src, thumb, onClick, label, index,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const poster = thumb || (src.includes('cloudinary.com') ? src.replace(/\.mp4$/, '.jpg') : undefined);
 
   return (
     <motion.div
@@ -51,6 +52,7 @@ const VideoThumb: React.FC<{ src: string; onClick: () => void; label?: string; i
       <video
         ref={videoRef}
         src={src}
+        poster={poster}
         className="w-full h-full object-cover opacity-80 group-hover:opacity-60 transition-opacity duration-300"
         muted
         playsInline
@@ -125,7 +127,8 @@ const Modal: React.FC<{
   onClose: () => void;
   onPrev: () => void;
   onNext: () => void;
-}> = ({ items, currentIndex, onClose, onPrev, onNext }) => {
+  onSelect: (index: number) => void;
+}> = ({ items, currentIndex, onClose, onPrev, onNext, onSelect }) => {
   const item = items[currentIndex];
 
   // Fermer avec Escape, naviguer avec flèches
@@ -206,6 +209,7 @@ const Modal: React.FC<{
               src={item.src}
               controls
               autoPlay
+              playsInline
               className="w-full max-h-[78vh] rounded-2xl object-contain shadow-2xl"
               style={{ background: '#000' }}
             />
@@ -224,12 +228,12 @@ const Modal: React.FC<{
 
         {/* Miniatures en bas */}
         {items.length > 1 && (
-          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
+          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-10">
             {items.map((m, i) => (
               <button
                 key={m.id}
-                onClick={(e) => { e.stopPropagation(); /* navigate to i */ }}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                onClick={(e) => { e.stopPropagation(); onSelect(i); }}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                   i === currentIndex ? 'bg-white scale-125' : 'bg-white/30 hover:bg-white/60'
                 }`}
                 aria-label={`Aller au média ${i + 1}`}
@@ -327,6 +331,7 @@ const Realisations: React.FC = () => {
               <VideoThumb
                 key={item.id}
                 src={item.src}
+                thumb={item.thumb}
                 label={item.label}
                 index={index}
                 onClick={() => openModal(index)}
@@ -359,6 +364,7 @@ const Realisations: React.FC = () => {
           onClose={closeModal}
           onPrev={prevItem}
           onNext={nextItem}
+          onSelect={openModal}
         />
       )}
     </section>
