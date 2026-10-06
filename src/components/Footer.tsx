@@ -1,153 +1,127 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Phone, MessageCircle, MapPin, Zap } from 'lucide-react';
-
-const whatsappUrl = "https://wa.me/221704646450?text=Bonjour,%20j'ai%20vu%20vos%20services%20et%20j'aimerais%20un%20devis.";
+import { Container, Button } from './ui';
 
 const Footer: React.FC = () => {
+  const whatsappUrl = "https://wa.me/221704646450?text=" + encodeURIComponent("Bonjour Ousmane, j'ai besoin d'une intervention en urgence.");
+
+  const phoneNumbers = [
+    { display: '76 602 96 37', href: 'tel:+221766029637', label: 'Ligne directe' },
+    { display: '77 020 77 30', href: 'tel:+221770207730', label: 'Second contact' },
+    { display: '70 464 64 50', href: 'tel:+221704646450', label: 'WhatsApp & Appel' },
+  ];
+
+  const navLinks = [
+    { label: 'Accueil', href: '#' },
+    { label: 'Services', href: '#services' },
+    { label: 'Réalisations', href: '#realisations' },
+    { label: 'À Propos', href: '#about' },
+  ];
+
   return (
-    <footer className="bg-brand-light pt-24 pb-12 overflow-hidden relative">
-      {/* ── Final CTA Block ── */}
-      <div className="container mx-auto px-6 mb-24">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96, y: 20 }}
-          whileInView={{ opacity: 1, scale: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="relative bg-gradient-to-br from-brand-blue via-[#1e4a8a] to-[#0f2a5c] rounded-[2.5rem] p-12 md:p-20 text-center overflow-hidden"
-        >
-          {/* Decorative blobs */}
-          <div className="absolute -top-32 -right-32 w-80 h-80 bg-white/8 rounded-full blur-3xl" />
-          <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-brand-orange/15 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-white/3 rounded-full blur-3xl" />
-
-          {/* Grid pattern overlay */}
-          <div
-            className="absolute inset-0 opacity-[0.04] rounded-[2.5rem]"
-            style={{
-              backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)',
-              backgroundSize: '40px 40px',
-            }}
-          />
-
-          <div className="relative z-10 max-w-3xl mx-auto">
-            {/* Urgency badge */}
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full mb-8">
-              <Zap size={14} className="text-brand-orange" fill="currentColor" />
-              <span className="text-sm font-semibold text-white/80">Disponible immédiatement · Intervention rapide à Dakar</span>
-            </div>
-
-            <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6 leading-tight">
-              Prêt à résoudre votre{' '}
-              <span className="text-brand-orange">problème</span> technique ?
+    <footer id="contact" className="w-full">
+      {/* ── 1. BANDEAU CTA FINAL (BLEU NUIT UNI, SANS GRILLE, SANS DÉGRADÉ) ── */}
+      <section className="bg-night-900 text-sand-50 py-20 sm:py-28 border-b border-night-700">
+        <Container size="narrow">
+          <div className="flex flex-col items-center text-center">
+            <h2 className="font-display text-display-xl sm:text-display-2xl uppercase tracking-tight text-sand-50 mb-4 max-w-2xl leading-none">
+              Besoin d'un dépannage ou d'un devis à Dakar ?
             </h2>
-            <p className="text-xl text-white/65 mb-12 leading-relaxed">
-              Ne laissez pas une panne gâcher votre journée.
-              Contactez Ousmane maintenant pour une intervention rapide.
+
+            <p className="font-sans text-body-base sm:text-body-lg text-sand-300 max-w-md mb-10 leading-relaxed">
+              Contactez Ousmane directement par téléphone ou WhatsApp pour convenir d'un passage.
             </p>
 
-            <div className="flex flex-wrap justify-center gap-4">
-              <motion.a
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full sm:w-auto">
+              <Button
+                variant="call"
+                href="tel:+221766029637"
+                className="text-base font-bold"
+              >
+                Appeler le 76 602 96 37
+              </Button>
+              <Button
+                variant="whatsapp"
                 href={whatsappUrl}
                 target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.97 }}
-                className="btn bg-[#25D366] text-white hover:bg-[#22c55e] shadow-2xl shadow-[#25D366]/40 px-10 py-5 text-lg font-bold"
+                className="text-base font-bold"
               >
-                <MessageCircle size={22} fill="currentColor" />
-                WhatsApp — Devis Gratuit
-              </motion.a>
-              <motion.a
-                href="tel:+221766029637"
-                whileHover={{ scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.97 }}
-                className="btn bg-white text-brand-blue hover:bg-white/95 shadow-2xl shadow-black/10 px-10 py-5 text-lg font-bold"
-              >
-                <Phone size={22} />
-                76 602 96 37
-              </motion.a>
+                WhatsApp (Message direct)
+              </Button>
             </div>
-
-            <p className="mt-8 text-sm font-medium text-white/45 flex items-center justify-center gap-2">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
-              </span>
-              Réponse garantie en moins de 5 minutes
-            </p>
           </div>
-        </motion.div>
-      </div>
+        </Container>
+      </section>
 
-      {/* ── Footer Links ── */}
-      <div className="container mx-auto px-6 grid md:grid-cols-4 gap-12 border-t border-gray-200 pt-16">
-        {/* Brand */}
-        <div className="col-span-1 md:col-span-2">
-          <a href="#" className="flex items-center gap-2.5 mb-6 group">
-            <div className="w-9 h-9 bg-brand-blue rounded-xl flex items-center justify-center shadow-lg shadow-brand-blue/20">
-              <span className="text-white font-bold text-lg font-display">O</span>
+      {/* ── 2. FOOTER TECHNIQUE & COORDONNÉES ── */}
+      <div className="bg-night-950 text-sand-50 py-16">
+        <Container>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-14 pb-12 border-b border-night-800">
+            {/* Colonne 1 : Identité */}
+            <div className="md:col-span-5 flex flex-col justify-between">
+              <div>
+                <span className="font-display text-2xl font-bold tracking-tight text-sand-50 uppercase block">
+                  OUSMANE
+                </span>
+                <span className="font-sans text-xs font-semibold tracking-widest text-sand-400 uppercase block mb-4">
+                  Technicien Supérieur
+                </span>
+                <p className="font-sans text-sm text-sand-300 max-w-sm leading-relaxed">
+                  Intervention en plomberie, pompes à eau, climatisation, électricité et vidéosurveillance à Dakar et sur l'ensemble du territoire sénégalais.
+                </p>
+              </div>
             </div>
-            <div className="flex flex-col leading-none">
-              <span className="text-base font-display font-bold tracking-tight text-brand-dark">OUSMANE</span>
-              <span className="text-[10px] font-semibold text-brand-orange uppercase tracking-widest">Technicien Supérieur</span>
+
+            {/* Colonne 2 : Coordonnées (3 numéros + adresse) */}
+            <div className="md:col-span-4 flex flex-col">
+              <span className="font-sans text-xs font-semibold uppercase tracking-widest text-action-orange mb-4 block">
+                Téléphones & Adresse
+              </span>
+
+              <ul className="space-y-3 font-sans text-sm">
+                {phoneNumbers.map((p) => (
+                  <li key={p.display}>
+                    <a
+                      href={p.href}
+                      className="text-sand-100 hover:text-action-orange transition-colors font-medium flex items-center gap-2"
+                    >
+                      <span className="font-bold">{p.display}</span>
+                      <span className="text-sand-400 text-xs font-normal">({p.label})</span>
+                    </a>
+                  </li>
+                ))}
+                <li className="pt-2 text-sand-300">
+                  <span className="block font-medium text-sand-100">Atelier / Base :</span>
+                  Dakar, Rue fleuriste en face Orca
+                </li>
+              </ul>
             </div>
-          </a>
-          <p className="text-brand-dark/45 max-w-sm leading-relaxed text-sm">
-            Plomberie, électricité, climatisation, pompes et caméras de surveillance à Dakar et partout au Sénégal.
-          </p>
-        </div>
 
-        {/* Navigation */}
-        <div>
-          <h4 className="text-sm font-bold mb-6 text-brand-dark uppercase tracking-wider">Navigation</h4>
-          <ul className="flex flex-col gap-3">
-            {[
-              { label: 'Accueil', href: '#' },
-              { label: 'Services', href: '#services' },
-              { label: 'Réalisations', href: '#realisations' },
-              { label: 'À Propos', href: '#about' },
-              { label: 'Témoignages', href: '#testimonials' },
-            ].map((item) => (
-              <li key={item.label}>
-                <a href={item.href} className="text-sm text-brand-dark/45 hover:text-brand-blue transition-colors font-medium">
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+            {/* Colonne 3 : Navigation */}
+            <div className="md:col-span-3 flex flex-col">
+              <span className="font-sans text-xs font-semibold uppercase tracking-widest text-sand-400 mb-4 block">
+                Plan du site
+              </span>
+              <ul className="space-y-2.5 font-sans text-sm">
+                {navLinks.map((item) => (
+                  <li key={item.label}>
+                    <a
+                      href={item.href}
+                      className="text-sand-300 hover:text-sand-50 transition-colors"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
 
-        {/* Contact */}
-        <div>
-          <h4 className="text-sm font-bold mb-6 text-brand-dark uppercase tracking-wider">Contact</h4>
-          <ul className="flex flex-col gap-4">
-            <li className="flex items-start gap-3">
-              <MapPin size={16} className="text-brand-orange shrink-0 mt-0.5" />
-              <span className="text-sm text-brand-dark/45">Dakar, Rue fleuriste en face Orca</span>
-            </li>
-            {[
-              { number: '76 602 96 37', href: 'tel:+221766029637' },
-              { number: '77 020 77 30', href: 'tel:+221770207730' },
-              { number: '70 464 64 50', href: 'tel:+221704646450' },
-            ].map((phone) => (
-              <li key={phone.number}>
-                <a href={phone.href} className="flex items-center gap-3 text-sm text-brand-dark/45 hover:text-brand-orange transition-colors font-medium">
-                  <Phone size={14} className="text-brand-orange shrink-0" />
-                  {phone.number}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      <div className="container mx-auto px-6 border-t border-gray-200 mt-12 pt-8 text-center text-xs text-brand-dark/25">
-        <p>
-          Développé par{' '}
-          <span className="text-brand-dark/40 font-semibold">Lamine Gaye</span>
-          {' '}— Full Stack Developer
-        </p>
+          {/* Mentions légales sobres */}
+          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-sand-400 gap-4">
+            <p>© {new Date().getFullYear()} Ousmane – Technicien Supérieur · Dakar, Sénégal.</p>
+            <p>Tous droits réservés.</p>
+          </div>
+        </Container>
       </div>
     </footer>
   );

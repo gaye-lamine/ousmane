@@ -6,11 +6,11 @@ import About from './components/About';
 import InterventionArea from './components/InterventionArea';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
-import FloatingWhatsApp from './components/FloatingWhatsApp';
+import MobileActionBar from './components/MobileActionBar';
 
 function App() {
   return (
-    <div className="min-h-screen bg-brand-light">
+    <div className="min-h-screen bg-sand-100 text-night-900 pb-24 md:pb-0">
       <Navbar />
       <main>
         <Hero />
@@ -21,7 +21,7 @@ function App() {
         <Testimonials />
       </main>
       <Footer />
-      <FloatingWhatsApp />
+      <MobileActionBar />
     </div>
   );
 }

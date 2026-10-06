@@ -7,56 +7,60 @@ export default {
   theme: {
     extend: {
       colors: {
+        night: {
+          950: "#070D18",
+          900: "#0A1322",
+          800: "#121E34",
+          700: "#1E2D4A",
+          600: "#2D3F60",
+          500: "#4A5F82",
+          400: "#8295B5",
+        },
+        sand: {
+          50: "#FAF9F5",
+          100: "#F4F2EB",
+          200: "#E9E5D8",
+          300: "#D8D2C0",
+          400: "#BFB8A1",
+        },
+        action: {
+          orange: "#C8480C",
+          "orange-hover": "#B23D08",
+          whatsapp: "#15803D",
+          "whatsapp-hover": "#116832",
+        },
+        // Compatibilité de transition
         brand: {
-          blue: "#1A3A6B",
-          orange: "#F97316",
-          dark: "#0D1B2A",
-          light: "#F4F6FA",
+          blue: "#0A1322",
+          dark: "#070D18",
+          orange: "#C8480C",
+          light: "#F4F2EB",
         }
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["Outfit", "sans-serif"],
+        sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "system-ui", "sans-serif"],
+        display: ["Oswald", "sans-serif"],
       },
-      keyframes: {
-        'pulse-slow': {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.5' },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-12px)' },
-        },
-        'float-delayed': {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-8px)' },
-        },
-        'glow-pulse': {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(37, 211, 102, 0.4), 0 0 40px rgba(37, 211, 102, 0.2)' },
-          '50%': { boxShadow: '0 0 30px rgba(37, 211, 102, 0.7), 0 0 60px rgba(37, 211, 102, 0.3)' },
-        },
-        'ring-pulse': {
-          '0%': { transform: 'scale(1)', opacity: '0.6' },
-          '100%': { transform: 'scale(2.2)', opacity: '0' },
-        },
-        shimmer: {
-          '0%': { backgroundPosition: '-200% center' },
-          '100%': { backgroundPosition: '200% center' },
-        },
+      fontSize: {
+        "display-2xl": ["clamp(2.75rem, 8vw, 4.75rem)", { lineHeight: "0.96", letterSpacing: "-0.02em" }],
+        "display-xl": ["clamp(2.125rem, 5.5vw, 3.25rem)", { lineHeight: "1.02", letterSpacing: "-0.01em" }],
+        "display-lg": ["clamp(1.5rem, 3.5vw, 2.25rem)", { lineHeight: "1.1" }],
+        "display-md": ["clamp(1.25rem, 2.5vw, 1.625rem)", { lineHeight: "1.15" }],
+        "body-lg": ["clamp(1.0625rem, 1.8vw, 1.25rem)", { lineHeight: "1.55" }],
+        "body-base": ["1rem", { lineHeight: "1.5" }],
+        "body-sm": ["0.875rem", { lineHeight: "1.45" }],
       },
-      animation: {
-        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 5s ease-in-out infinite',
-        'float-delayed': 'float-delayed 6s ease-in-out infinite 1s',
-        'glow-pulse': 'glow-pulse 2.5s ease-in-out infinite',
-        'ring-pulse': 'ring-pulse 2s ease-out infinite',
-        'shimmer': 'shimmer 4s linear infinite',
+      borderRadius: {
+        sm: "4px",
+        DEFAULT: "6px",
+        md: "6px",
+        lg: "8px",
+        xl: "12px",
       },
       boxShadow: {
-        'glow-blue': '0 0 40px rgba(26, 58, 107, 0.25)',
-        'glow-orange': '0 0 40px rgba(249, 115, 22, 0.3)',
-        'glow-green': '0 0 40px rgba(37, 211, 102, 0.4)',
-      }
+        subtle: "0 1px 2px 0 rgba(10, 19, 34, 0.05)",
+        card: "0 4px 12px 0 rgba(10, 19, 34, 0.08)",
+      },
     },
   },
   plugins: [],
